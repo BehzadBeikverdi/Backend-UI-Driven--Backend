@@ -156,7 +156,7 @@ public class PageService {
                         Map.of("text", "Restart"),
                         Map.of(
                                 "type", ApiActionTypeEnum.API_CALL,
-                                "endpoint", "/reset",
+                                "endpoint", Endpoints.RESET,
                                 "method", ApiCallMethodEnum.POST,
                                 "responseType", ResponseTypeEnum.UI_SCHEMA
                         )
