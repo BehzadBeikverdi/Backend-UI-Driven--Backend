@@ -37,12 +37,12 @@ By sending structured UI definitions instead of static views, this backend enabl
 │ ├── main/
 │ │ ├── java/
 │ │ │ └── com/yourorg/backenduibridge/
-│ │ │ ├── controller/
-│ │ │ ├── service/
-│ │ │ └── model/
+│ │ │ ├── controllers/
+│ │ │ ├── enums/
+│ │ │ ├── services/
+│ │ │ └── models/
 │ │ └── resources/
-│ │ ├── application.yml
-│ │ └── db/
+│ │ └── application.yml
 │ └── test/
 ├── .gitignore
 ├── mvnw

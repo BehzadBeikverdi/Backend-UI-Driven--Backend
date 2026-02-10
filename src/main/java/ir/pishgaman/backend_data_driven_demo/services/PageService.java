@@ -1,7 +1,12 @@
 package ir.pishgaman.backend_data_driven_demo.services;
 
+import ir.pishgaman.backend_data_driven_demo.enums.ApiActionTypeEnum;
+import ir.pishgaman.backend_data_driven_demo.enums.ApiCallMethodEnum;
+import ir.pishgaman.backend_data_driven_demo.enums.FieldFormatEnum;
+import ir.pishgaman.backend_data_driven_demo.enums.ResponseTypeEnum;
 import ir.pishgaman.backend_data_driven_demo.models.BalanceModel;
 import ir.pishgaman.backend_data_driven_demo.models.ComponentModel;
+import ir.pishgaman.backend_data_driven_demo.values.Endpoints;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -37,7 +42,7 @@ public class PageService {
         BalanceModel balance = new BalanceModel(amount, "USD");
 
         return Map.of(
-                "responseType", "DATA",
+                "responseType", ResponseTypeEnum.DATA,
                 "model", "BalanceModel",
                 "data", Map.of("amount", balance.getAmount(), "currency", balance.getCurrency())
         );
@@ -57,16 +62,16 @@ public class PageService {
                         "ActionButton",
                         Map.of("text", "Next"),
                         Map.of(
-                                "type", "API_CALL",
-                                "endpoint", "/next-step",
-                                "method", "POST",
-                                "responseType", "UI_SCHEMA"
+                                "type", ApiActionTypeEnum.API_CALL,
+                                "endpoint", Endpoints.NEXT_STEP,
+                                "method", ApiCallMethodEnum.POST,
+                                "responseType", ResponseTypeEnum.UI_SCHEMA
                         )
                 )
         );
 
         return Map.of(
-                "responseType", "UI_SCHEMA",
+                "responseType", ResponseTypeEnum.UI_SCHEMA,
                 "schema", Map.of("components", components)
         );
     }
@@ -80,7 +85,7 @@ public class PageService {
                 new ComponentModel(
                         "BalanceCard",
                         Map.of(
-                                "responseType", "DATA",
+                                "responseType", ResponseTypeEnum.DATA,
                                 "model", "BalanceModel",
                                 "data", Map.of("amount", amount, "currency", "USD")
                         ),
@@ -90,10 +95,10 @@ public class PageService {
                         "ActionButton",
                         Map.of("text", "Refresh Balance"),
                         Map.of(
-                                "type", "API_CALL",
-                                "endpoint", "/data/balance",
-                                "method", "GET",
-                                "responseType", "DATA",
+                                "type", ApiActionTypeEnum.API_CALL,
+                                "endpoint", Endpoints.BALANCE,
+                                "method", ApiCallMethodEnum.GET,
+                                "responseType", ResponseTypeEnum.DATA,
                                 "model", "BalanceModel"
                         )
                 ),
@@ -101,16 +106,16 @@ public class PageService {
                         "ActionButton",
                         Map.of("text", "Next Step"),
                         Map.of(
-                                "type", "API_CALL",
-                                "endpoint", "/next-step",
-                                "method", "POST",
-                                "responseType", "UI_SCHEMA"
+                                "type", ApiActionTypeEnum.API_CALL,
+                                "endpoint", Endpoints.NEXT_STEP,
+                                "method", ApiCallMethodEnum.POST,
+                                "responseType", ResponseTypeEnum.UI_SCHEMA
                         )
                 )
         );
 
         return Map.of(
-                "responseType", "UI_SCHEMA",
+                "responseType", ResponseTypeEnum.UI_SCHEMA,
                 "schema", Map.of("components", components)
         );
     }
@@ -124,20 +129,20 @@ public class PageService {
                         Map.of(
                                 "fields", List.of(
                                         Map.of("name", "fullName", "label", "Full Name", "required", true),
-                                        Map.of("name", "email", "label", "Email", "required", true, "format", "EMAIL")
+                                        Map.of("name", "email", "label", "Email", "required", true, "format", FieldFormatEnum.EMAIL)
                                 )
                         ),
                         Map.of(
-                                "type", "API_CALL",
-                                "endpoint", "/submit-info",
-                                "method", "POST",
-                                "responseType", "UI_SCHEMA"
+                                "type", ApiActionTypeEnum.API_CALL,
+                                "endpoint", Endpoints.SUBMIT_INFO,
+                                "method", ApiCallMethodEnum.POST,
+                                "responseType", ResponseTypeEnum.UI_SCHEMA
                         )
                 )
         );
 
         return Map.of(
-                "responseType", "UI_SCHEMA",
+                "responseType", ResponseTypeEnum.UI_SCHEMA,
                 "schema", Map.of("components", components)
         );
     }
@@ -150,16 +155,16 @@ public class PageService {
                         "ActionButton",
                         Map.of("text", "Restart"),
                         Map.of(
-                                "type", "API_CALL",
+                                "type", ApiActionTypeEnum.API_CALL,
                                 "endpoint", "/reset",
-                                "method", "POST",
-                                "responseType", "UI_SCHEMA"
+                                "method", ApiCallMethodEnum.POST,
+                                "responseType", ResponseTypeEnum.UI_SCHEMA
                         )
                 )
         );
 
         return Map.of(
-                "responseType", "UI_SCHEMA",
+                "responseType", ResponseTypeEnum.UI_SCHEMA,
                 "schema", Map.of("components", components)
         );
     }
